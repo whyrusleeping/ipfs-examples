@@ -3,6 +3,10 @@ using ipfs within your code is really quite simple!
 
 At its simplest, you only need to create a node:
 ```
+import "github.com/jbenet/go-ipfs/core"
+.
+.
+.
 builder := core.NewNodeBuilder()
 node, err := builder.Build(ctx)
 ```
