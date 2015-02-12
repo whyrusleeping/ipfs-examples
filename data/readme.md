@@ -47,6 +47,21 @@ format associated with it. an object, on the other hand, refers to a block that
 follows the merkledag protobuf data format. it can be parsed and manipulated
 via the `ipfs object` command. any given hash may represent an object or a block.
 
+### Creating a block from scratch
+Creating your own blocks is easy! simply put your data in a file and run
+`ipfs block put <yourfile>` on it, or you can pipe your filedata into 
+`ipfs block put`, like so:
+
+```
+$ echo "This is some data" | ipfs block put
+QmfQ5QAjvg4GtA3wg3adpnDJug8ktA1BxurVqBD8rtgVjM
+$ ipfs block get QmfQ5QAjvg4GtA3wg3adpnDJug8ktA1BxurVqBD8rtgVjM
+This is some data
+```
+Note: When making your own block data, you wont be able to read the data with
+`ipfs cat`, this is because you are inputting raw data without the unixfs data
+format. To read raw blocks use `ipfs block get` as shown in the example.
+
 ### Creating Custom Objects
 The merkledag structure makes it really easy to define your own datastructures
 on top of them. lets take a look at how that is accomplished through the cli.

@@ -6,6 +6,16 @@ ipfs is configured through a json formatted text file, located by default at
 The config file stores a few different address types, all of which use the
 multiaddr addressing format. Lets go over what each address type means.
 
+```
+"Addresses": {
+    "Swarm": [
+      "/ip4/0.0.0.0/tcp/4001"
+    ],
+    "API": "/ip4/127.0.0.1/tcp/5001",
+    "Gateway": "/ip4/127.0.0.1/tcp/8080"
+  }
+```
+
 #### Swarm
 Swarm addresses are addresses that the local daemon will listen on for
 connections from other ipfs peers. You should try to ensure that these
@@ -23,7 +33,8 @@ parties may be able to send commands to your ipfs daemon.
 The Gateway address is the address that the daemon will serve the gateway
 interface from. The gateway may be used to view files through ipfs, and serve
 static web content. This port may or may not be dialable from outside of your
-machine, thats entirely up to you.
+machine, thats entirely up to you. The gateway address is optional, if you
+leave it blank, the gateway server will not start.
 
 ### Mounts
 The mounts config values specifies the default mountpoints for the ipfs and
