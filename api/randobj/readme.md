@@ -56,8 +56,7 @@ func main() {
 Set up our builder, and use the users standard ipfs configuration directory.
 
 ```
-	home := os.Getenv("HOME")
-	r := fsrepo.At(home + "/.go-ipfs")
+	r := fsrepo.At("~/.go-ipfs")
 	if err := r.Open(); err != nil {
 		panic(err)
 	}
@@ -68,7 +67,7 @@ Set up our builder, and use the users standard ipfs configuration directory.
 Now we need to set up our context and finally build our node!
 
 ```
-
+	// Make our 'master' context and defer cancelling it
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
@@ -77,6 +76,7 @@ Now we need to set up our context and finally build our node!
 		panic(err)
 	}
 
+	// Set the global node for access in the handler
 	gnode = node
 
 	http.HandleFunc("/ipfsobject", ServeIpfsRand)
