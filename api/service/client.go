@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"os"
 
 	core "github.com/jbenet/go-ipfs/core"
@@ -17,7 +18,7 @@ func main() {
 		fmt.Println("Please give a peer ID as an argument")
 		return
 	}
-	target, err := peer.IDFromString(os.Args[1])
+	target, err := peer.IDB58Decode(os.Args[1])
 	if err != nil {
 		panic(err)
 	}
@@ -43,7 +44,8 @@ func main() {
 
 	con, err := corenet.Dial(nd, target, "/app/whyrusleeping")
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		return
 	}
 
 	io.Copy(os.Stdout, con)
