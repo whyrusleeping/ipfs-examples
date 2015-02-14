@@ -50,7 +50,6 @@ And now, lets tie it all together in a main function.
 ```
 func main() {
 	builder := core.NewNodeBuilder().Online()
-
 ```
 
 Set up our builder, and use the users standard ipfs configuration directory.
