@@ -5,6 +5,11 @@ if you havent done this yet:
 $ ipfs init
 ```
 
+Now, run the daemon:
+```
+$ ipfs daemon
+```
+
 Now that we have the daemon up, lets have some fun.
 
 Basic work with files in ipfs:
